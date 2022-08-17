@@ -73,6 +73,29 @@ const init = () => {
     window.onload = function() {
       requestAPI()
     }
+    // shop addEventListener
+    shop.addEventListener("click", (event) => {
+      const target = event.target
+      if (target.classList.contains("fa-plus")) {
+        // console.log("plus");
+        const id = target.previousElementSibling.id
+        increment(id)
+      } else if (target.classList.contains("fa-minus")) {
+        // console.log("minus");
+        const id = target.nextElementSibling.id
+        decrement(id)
+      }
+    })
+    const increment = (id) => {
+      +document.getElementById(`${id}`).textContent++
+    }
+    const decrement = (id) => {
+      if (document.getElementById(`${id}`).textContent === "0") {
+        return
+      } else {
+        +document.getElementById(`${id}`).textContent--
+      }
+    }
   }
 }
 init()
